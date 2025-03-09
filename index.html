@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskify - Task Manager - Group4</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Taskify</h1>
+        <button id="theme-toggle">🌙 Toggle Theme</button>
+        
+        <div class="task-input">
+            <input type="text" id="task-input" placeholder="Add a new task...">
+            <button id="add-task">➕ Add Task</button>
+        </div>
+
+        <div class="task-counters">
+            <span>Total Tasks: <span id="total-tasks">0</span></span>
+            <span>Completed: <span id="completed-tasks">0</span></span>
+            <span>Deleted: <span id="deleted-tasks">0</span></span>
+            <span>Edited: <span id="edited-tasks">0</span></span>
+        </div>
+
+        <ul id="task-list"></ul>
+
+        <div class="actions">
+            <button id="sort-asc">Sort A-Z</button>
+            <button id="sort-desc">Sort Z-A</button>
+            <button id="reset-order">Reset Order</button>
+            <button id="delete-selected">Delete Selected</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
