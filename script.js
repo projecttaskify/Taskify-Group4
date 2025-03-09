@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderTasks();
     }
 
-    /**
+    /*
       - Function to delete a task
       - Asks for confirmation before deleting
      */
