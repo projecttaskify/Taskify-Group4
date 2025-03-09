@@ -1,7 +1,6 @@
-/* General Styling */
 body {
     font-family: 'Poppins', sans-serif;
-    background: #a6d5be; /* Light Mode Background */
+    background: #a6d5be; 
     color: #1c1c1c;
     transition: background 0.3s, color 0.3s;
     display: flex;
@@ -11,21 +10,22 @@ body {
     margin: 0;
 }
 
+/* Centered Container */
 .container {
-    background: #ffffff;
+    background: #ffffff; 
     padding: 20px;
     width: 90%;
     max-width: 500px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
-    border: 2px solid #30a6d6;
+    border: 2px solid #30a6d6; 
 }
 
-
+/* Title */
 h1 {
     font-size: 34px;
-    color: #30a6d6; 
+    color: #30a6d6;
     margin-bottom: 20px;
 }
 
@@ -68,7 +68,7 @@ h1 {
 }
 
 .task-input button:hover {
-    background: #1c9c74;
+    background: #1c9c74; 
 }
 
 /* Task Counters */
@@ -81,9 +81,9 @@ h1 {
     color: #1c1c1c; 
 }
 
-/* Dark Mode Task Counters*/
+/* Dark Mode Task Counters Fix */
 .dark-mode .task-counters {
-    color: #f0f0f0; 
+    color: #f0f0f0;
 }
 
 /* Task List */
@@ -99,9 +99,9 @@ li {
     justify-content: space-between;
     padding: 12px;
     margin-bottom: 8px;
-    background: #a6d5be;
+    background: #a6d5be; 
     border-radius: 5px;
-    border-left: 5px solid #30a6d6;
+    border-left: 5px solid #30a6d6; 
     transition: background 0.3s;
 }
 
@@ -115,6 +115,18 @@ li .task-text {
     color: #1c1c1c;
 }
 
+/* Completed Task Styling */
+.task-completed {
+    background: #d3e3d3 !important; 
+    border-left: 5px solid #3a7d44; 
+}
+
+/* Dark Mode Completed Tasks */
+.dark-mode .task-completed {
+    background: #2a4a2a !important; 
+    border-left: 5px solid #66bb6a;
+}
+
 .completed {
     text-decoration: line-through;
     color: #ca9998;
@@ -126,14 +138,14 @@ button {
     padding: 8px 12px;
     cursor: pointer;
     border: none;
-    background: #30a6d6; 
+    background: #30a6d6;
     color: white;
     border-radius: 5px;
     transition: background 0.3s;
 }
 
 button:hover {
-    background: #1c9c74;
+    background: #1c9c74; 
 }
 
 .actions {
@@ -154,7 +166,7 @@ button:hover {
     background: #1c9c74; 
 }
 
-/* Dark Mode */
+/* Dark Mode*/
 .dark-mode {
     background: #1c1c1c; 
     color: #f0f0f0;
@@ -180,11 +192,12 @@ button:hover {
 
 .dark-mode button:hover {
     background: #1c9c74; 
+}
 
 .dark-mode #theme-toggle {
     background: #1c9c74;
 }
 
-.dark-mode .task-text{
-     color: #f0f0f0;
+.dark-mode .task-text {
+    color: #f0f0f0;
 }
