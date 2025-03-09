@@ -20,10 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let editedCount = 0;
     let draggedTaskIndex = null; // Variable to store index of dragged task
 
-    /**
-     * Function to render tasks in the UI
-     * - Clears the task list and re-renders it
-     * - Adds event listeners for drag-and-drop, edit, delete, and completion toggle
+    /*
+      Function to render tasks in the UI
+      - Clears the task list and re-renders it
+      - Adds event listeners for drag-and-drop, edit, delete, and completion toggle
      */
     function renderTasks() {
         taskList.innerHTML = ""; // Clear task list before rendering
@@ -83,24 +83,22 @@ document.addEventListener("DOMContentLoaded", () => {
         saveTasks(); // Save tasks in localStorage
     }
 
-    /**
-     * Function to swap two tasks when dragging
-     */
+    
+      //Function to swap two tasks when dragging
+    
     function swapTasks(fromIndex, toIndex) {
         [tasks[fromIndex], tasks[toIndex]] = [tasks[toIndex], tasks[fromIndex]];
         renderTasks();
     }
 
-    /**
-     * Function to save tasks to localStorage
-     */
+    //Function to save tasks to localStorage
+
     function saveTasks() {
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
 
-    /**
-     * Function to update the task counters (total, completed, deleted, edited)
-     */
+    //Function to update the task counters (total, completed, deleted, edited)
+
     function updateCounters() {
         totalTasksCounter.textContent = tasks.length;
         completedTasksCounter.textContent = tasks.filter(t => t.completed).length;
@@ -108,9 +106,9 @@ document.addEventListener("DOMContentLoaded", () => {
         editedTasksCounter.textContent = editedCount;
     }
 
-    /**
-     * Function to add a new task
-     * - Checks for duplicate tasks and empty input
+    /*
+      - Function to add a new task
+      - Checks for duplicate tasks and empty input
      */
     function addTask() {
         const text = taskInput.value.trim();
@@ -130,8 +128,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /**
-     * Function to delete a task
-     * - Asks for confirmation before deleting
+      - Function to delete a task
+      - Asks for confirmation before deleting
      */
     function deleteTask(index) {
         if (confirm(`Delete task: "${tasks[index].text}"?`)) {
@@ -142,9 +140,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    /**
-     * Function to delete all completed tasks
-     */
+    // Function to delete all completed tasks
+     
     function deleteSelectedTasks() {
         const completedTasks = tasks.filter(task => task.completed);
         if (completedTasks.length === 0) return alert("No completed tasks to delete.");
@@ -156,17 +153,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    /**
-     * Function to toggle task completion
-     */
+    //Function to toggle task completion
+     
     function toggleTaskCompletion(index) {
         tasks[index].completed = !tasks[index].completed;
         renderTasks();
     }
 
-    /**
-     * Function to edit a task
-     * - Prevents empty edits and duplicate names
+    /*
+     - Function to edit a task
+     - Prevents empty edits and duplicate names
      */
     function editTask(index) {
         const newText = prompt("Edit Task:", tasks[index].text).trim();
@@ -185,33 +181,26 @@ document.addEventListener("DOMContentLoaded", () => {
         renderTasks();
     }
 
-    /**
-     * Function to sort tasks in ascending order (A-Z)
-     */
+    //Function to sort tasks in ascending order (A-Z)
     function sortTasksAsc() {
         tasks.sort((a, b) => a.text.localeCompare(b.text));
         renderTasks();
     }
 
-    /**
-     * Function to sort tasks in descending order (Z-A)
-     */
+    // Function to sort tasks in descending order (Z-A)
+
     function sortTasksDesc() {
         tasks.sort((a, b) => b.text.localeCompare(a.text));
         renderTasks();
     }
 
-    /**
-     * Function to reset the task order to the original order
-     */
+    //Function to reset the task order to the original order
     function resetTaskOrder() {
         tasks = [...originalOrder]; // Restore from original order
         renderTasks();
     }
 
-    /**
-     * Function to toggle dark mode theme
-     */
+    // Function to toggle dark mode theme
     themeToggle.addEventListener("click", () => {
         document.body.classList.toggle("dark-mode");
     });
