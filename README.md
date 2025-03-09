@@ -7,9 +7,9 @@ Lon Adlehcir G. Monserate
 Shejay Barranda
 Jose Greg Picaso
 Marvin Buendia
-Jomel PAhuwayan
+Jomel Pahuwayan
 Harold Hector Vale
 Charls John Cordova
 Karl Laurence Piano
 Melchizedek Zamudio
-Jorge Enon
+Jorge Ellise Enon
