@@ -1,7 +1,6 @@
-/* General Styling */
 body {
     font-family: 'Poppins', sans-serif;
-    background: #a6d5be; /* Light Mode Background */
+    background: #a6d5be; 
     color: #1c1c1c;
     transition: background 0.3s, color 0.3s;
     display: flex;
@@ -11,22 +10,20 @@ body {
     margin: 0;
 }
 
-/* Centered Container */
 .container {
-    background: #ffffff; /* Light Mode Container */
+    background: #ffffff; 
     padding: 20px;
     width: 90%;
     max-width: 500px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
-    border: 2px solid #30a6d6; /* Primary */
-}
+    border: 2px solid #30a6d6; 
 
 /* Title */
 h1 {
     font-size: 34px;
-    color: #30a6d6; /* Primary */
+    color: #30a6d6; 
     margin-bottom: 20px;
 }
 
@@ -54,12 +51,12 @@ h1 {
 }
 
 .task-input input:focus {
-    border-color: #1c9c74; /* Accent */
+    border-color: #1c9c74;
     box-shadow: 0 0 5px rgba(48, 166, 214, 0.5);
 }
 
 .task-input button {
-    background: #30a6d6; /* Primary */
+    background: #30a6d6; 
     color: white;
     border: none;
     padding: 10px 15px;
@@ -69,7 +66,7 @@ h1 {
 }
 
 .task-input button:hover {
-    background: #1c9c74; /* Accent */
+    background: #1c9c74;
 }
 
 /* Task Counters */
@@ -79,12 +76,11 @@ h1 {
     margin-bottom: 15px;
     font-size: 14px;
     font-weight: bold;
-    color: #1c1c1c; /* Default (Light Mode) */
+    color: #1c1c1c;
 }
 
-/* Dark Mode Task Counters Fix */
 .dark-mode .task-counters {
-    color: #f0f0f0; /* White text in Dark Mode */
+    color: #f0f0f0;
 }
 
 /* Task List */
@@ -100,14 +96,14 @@ li {
     justify-content: space-between;
     padding: 12px;
     margin-bottom: 8px;
-    background: #a6d5be; /* Secondary */
+    background: #a6d5be; 
     border-radius: 5px;
-    border-left: 5px solid #30a6d6; /* Primary */
+    border-left: 5px solid #30a6d6; 
     transition: background 0.3s;
 }
 
 li:hover {
-    background: #54b080; /* Accent */
+    background: #54b080; 
 }
 
 li .task-text {
@@ -127,23 +123,23 @@ button {
     padding: 8px 12px;
     cursor: pointer;
     border: none;
-    background: #30a6d6; /* Primary */
+    background: #30a6d6; 
     color: white;
     border-radius: 5px;
     transition: background 0.3s;
 }
 
 button:hover {
-    background: #1c9c74; /* Accent */
+    background: #1c9c74; 
 }
 
 .actions {
     margin-top: 15px;
 }
 
-/* Theme Toggle Button */
+
 #theme-toggle {
-    background: #30a6d6; /* Primary */
+    background: #30a6d6; 
     color: white;
     font-size: 14px;
     padding: 8px 12px;
@@ -152,18 +148,18 @@ button:hover {
 }
 
 #theme-toggle:hover {
-    background: #1c9c74; /* Accent */
+    background: #1c9c74;
 }
 
-/* Dark Mode (Affects Entire Page) */
+
 .dark-mode {
-    background: #1c1c1c; /* Dark Mode Full Background */
+    background: #1c1c1c;
     color: #f0f0f0;
 }
 
 .dark-mode .container {
     background: #2c2c2c;
-    border: 2px solid #30a6d6; /* Primary */
+    border: 2px solid #30a6d6;
 }
 
 .dark-mode li {
@@ -172,7 +168,7 @@ button:hover {
 }
 
 .dark-mode li:hover {
-    background: #1c9c74; /* Accent */
+    background: #1c9c74; 
 }
 
 .dark-mode button {
@@ -180,7 +176,7 @@ button:hover {
 }
 
 .dark-mode button:hover {
-    background: #1c9c74; /* Accent */
+    background: #1c9c74; 
 }
 
 .dark-mode #theme-toggle {
