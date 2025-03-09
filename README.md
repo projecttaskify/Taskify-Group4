@@ -11,6 +11,6 @@ Marvin Buendia
 Jomel Pahuwayan
 Harold Hector Vale
 Charls John Cordova
-Karl Laurence Piano
+Karl Laurence Piano programmer(taskInput, taskList, completedTask)
 Melchizedek Zamudio
 Jorge Ellise Enon
