@@ -93,27 +93,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Save edited task
-    function saveEditedTask(input, index) {
-        const newText = input.value.trim();
-        if (!newText) {
-            alert("Task cannot be empty!");
-            return;
-        }
+function saveEditedTask(input, index) {
+    const newText = input.value.trim();
+    const parentLi = input.closest("li");
 
-        if (tasks[index].text !== newText) {
-            tasks[index].text = newText;
-            editedCount++; // Increment only if the task was actually changed
-        }
+    if (!newText) {
+        alert("Task cannot be empty!");
+        
+        // Revert back to original task text
+        const originalSpan = document.createElement("span");
+        originalSpan.textContent = tasks[index].text;
+        originalSpan.className = "task-text";
+        originalSpan.addEventListener("dblclick", () => enableEditing(originalSpan, index));
 
-        const newSpan = document.createElement("span");
-        newSpan.textContent = newText;
-        newSpan.className = "task-text";
-        newSpan.addEventListener("dblclick", () => enableEditing(newSpan, index));
-
-        input.replaceWith(newSpan);
-
-        saveTasks();
+        input.replaceWith(originalSpan);
+        return;
     }
+
+    if (tasks[index].text !== newText) {
+        tasks[index].text = newText;
+        editedCount++;
+    }
+
+    const newSpan = document.createElement("span");
+    newSpan.textContent = newText;
+    newSpan.className = "task-text";
+    newSpan.addEventListener("dblclick", () => enableEditing(newSpan, index));
+
+    input.replaceWith(newSpan);
+
+    saveTasks();
+}
 
     // Drag-and-Drop Handlers
     function handleDragStart(event) {
