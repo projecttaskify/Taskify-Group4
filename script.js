@@ -75,7 +75,58 @@ document.addEventListener("DOMContentLoaded", () => {
         saveTasks();
     }
 
-    // Enable editing on double-click
+    // Add a new task
+    function addTask() {
+        const text = taskInput.value.trim();
+        if (!text) {
+            alert("Task cannot be empty!");
+            return;
+        }
+        if (tasks.some(t => t.text.toLowerCase() === text.toLowerCase())) {
+            alert("Task already exists!");
+            return;
+        }
+
+        const newTask = { text, completed: false, selected: false };
+        tasks.push(newTask);
+        originalTasks.push(newTask);  
+        taskInput.value = "";
+        saveTasks();
+        renderTasks();
+    }
+
+    // Delete one task 
+    function deleteTask(index) {
+        if (confirm(`Delete task: "${tasks[index].text}"?`)) {
+            tasks.splice(index, 1);
+            originalTasks = originalTasks.filter((_, i) => i !== index);
+            deletedCount++;
+            saveTasks();
+            renderTasks();
+        }
+    }
+
+    // Delete multiple selected tasks
+    function deleteSelectedTasks() {
+        const selectedTasks = tasks.filter(task => task.selected);
+        const selectedCount = selectedTasks.length;
+
+        if (selectedCount === 0) {
+            alert("No tasks selected for deletion.");
+            return;
+        }
+
+        if (confirm(`Are you sure you want to delete ${selectedCount} selected task(s)?`)) {
+            tasks = tasks.filter(task => !task.selected);
+            originalTasks = originalTasks.filter(task => !task.selected);
+            deletedCount += selectedCount;
+
+            saveTasks();
+            renderTasks();
+        }
+    }
+
+        // Enable editing on double-click
     function enableEditing(taskText, index) {
         const originalText = taskText.textContent;
         const input = document.createElement("input");
@@ -165,56 +216,6 @@ function saveEditedTask(input, index) {
         localStorage.setItem("editedCount", editedCount);
     }
 
-    // Add a new task
-    function addTask() {
-        const text = taskInput.value.trim();
-        if (!text) {
-            alert("Task cannot be empty!");
-            return;
-        }
-        if (tasks.some(t => t.text.toLowerCase() === text.toLowerCase())) {
-            alert("Task already exists!");
-            return;
-        }
-
-        const newTask = { text, completed: false, selected: false };
-        tasks.push(newTask);
-        originalTasks.push(newTask);  
-        taskInput.value = "";
-        saveTasks();
-        renderTasks();
-    }
-
-    // Delete one task 
-    function deleteTask(index) {
-        if (confirm(`Delete task: "${tasks[index].text}"?`)) {
-            tasks.splice(index, 1);
-            originalTasks = originalTasks.filter((_, i) => i !== index);
-            deletedCount++;
-            saveTasks();
-            renderTasks();
-        }
-    }
-
-    // Delete multiple selected tasks
-    function deleteSelectedTasks() {
-        const selectedTasks = tasks.filter(task => task.selected);
-        const selectedCount = selectedTasks.length;
-
-        if (selectedCount === 0) {
-            alert("No tasks selected for deletion.");
-            return;
-        }
-
-        if (confirm(`Are you sure you want to delete ${selectedCount} selected task(s)?`)) {
-            tasks = tasks.filter(task => !task.selected);
-            originalTasks = originalTasks.filter(task => !task.selected);
-            deletedCount += selectedCount;
-
-            saveTasks();
-            renderTasks();
-        }
-    }
 
     // Save tasks to localStorage
     function saveTasks() {
