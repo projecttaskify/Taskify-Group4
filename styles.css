@@ -10,7 +10,6 @@ body {
     margin: 0;
 }
 
-/* Centered Container */
 .container {
     background: #ffffff; 
     padding: 20px;
@@ -26,6 +25,7 @@ body {
 h1 {
     font-size: 34px;
     color: #30a6d6;
+    margin-bottom: 20px;
 }
 
 /* Task Input */
@@ -33,11 +33,6 @@ h1 {
     display: flex;
     gap: 10px;
     margin-bottom: 15px;
-}
-
-.dragging {
-    opacity: 0.5;
-    background: #ccc;
 }
 
 .task-input input {
@@ -80,9 +75,17 @@ h1 {
     color: #1c1c1c; 
 }
 
-/* Dark Mode Task Counters Fix */
-.dark-mode .task-counters {
-    color: #f0f0f0;
+/* Check Icon */
+.check-icon {
+    cursor: pointer;
+    font-size: 18px;
+    color: #30a6d6;
+    margin-left: 10px;  
+    transition: color 0.3s;
+}
+
+.check-icon:hover {
+    color: #1c9c74;
 }
 
 /* Task List */
@@ -126,6 +129,7 @@ li .task-text {
     border-left: 5px solid #66bb6a;
 }
 
+/* Line-through Effect for Completed Tasks */
 .completed {
     text-decoration: line-through;
     color: #ca9998;
@@ -165,7 +169,7 @@ button:hover {
     background: #1c9c74; 
 }
 
-/* Dark Mode*/
+/*  Dark Mode */
 .dark-mode {
     background: #1c1c1c; 
     color: #f0f0f0;
@@ -174,6 +178,10 @@ button:hover {
 .dark-mode .container {
     background: #2c2c2c;
     border: 2px solid #30a6d6; 
+}
+
+.dark-mode .task-counters {
+    color: #f0f0f0;
 }
 
 .dark-mode li {
@@ -199,4 +207,12 @@ button:hover {
 
 .dark-mode .task-text {
     color: #f0f0f0;
+}
+
+.dark-mode .check-icon {
+    color: #66bb6a;
+}
+
+.dark-mode .check-icon:hover {
+    color: #1c9c74;
 }
