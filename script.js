@@ -257,6 +257,12 @@ function saveEditedTask(input, index) {
     // Event Listeners
     addTaskButton.addEventListener("click", addTask);
     deleteSelectedButton.addEventListener("click", deleteSelectedTasks);
+    document.addEventListener("keydown", (event) => {
+    if (event.key === "Delete") {
+        deleteSelectedTasks();
+    }
+});
+
     themeToggle.addEventListener("click", toggleDarkMode);
     taskInput.addEventListener("keypress", (e) => { if (e.key === "Enter") addTask(); });
 
