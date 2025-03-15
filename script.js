@@ -36,9 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const checkbox = document.createElement("input");
             checkbox.type = "checkbox";
             checkbox.classList.add("task-checkbox");
-            checkbox.checked = task.selected || false; // Restore checkbox state
+            checkbox.checked = task.selected || false;
 
-            // Save checkbox state when toggled
             checkbox.addEventListener("change", () => {
                 tasks[index].selected = checkbox.checked;
                 saveTasks();
@@ -48,14 +47,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const taskText = document.createElement("span");
             taskText.textContent = task.text;
             taskText.className = "task-text";
-            
             taskText.addEventListener("dblclick", () => enableEditing(taskText, index));
 
             if (task.completed) {
                 taskText.classList.add("completed");
                 li.classList.add("task-completed");
             }
-            
+
             const checkIcon = document.createElement("span");
             checkIcon.textContent = "✔️";
             checkIcon.classList.add("check-icon");
@@ -85,10 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
         input.value = originalText;
         input.className = "task-edit-input";
 
-        // Save edited task on blur or Enter key
-        input.addEventListener("blur", () => saveEditedTask(input, taskText, index));
+        input.addEventListener("blur", () => saveEditedTask(input, index));
         input.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") saveEditedTask(input, taskText, index);
+            if (e.key === "Enter") saveEditedTask(input, index);
         });
 
         taskText.replaceWith(input);
@@ -96,23 +93,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Save edited task
-    function saveEditedTask(input, taskText, index) {
+    function saveEditedTask(input, index) {
         const newText = input.value.trim();
         if (!newText) {
             alert("Task cannot be empty!");
-            renderTasks();
             return;
         }
-        tasks[index].text = newText;
-        editedCount++;
 
-        // Replace input with updated span
-        taskText.textContent = newText;
-        taskText.addEventListener("dblclick", () => enableEditing(taskText, index));
-        input.replaceWith(taskText);
+        if (tasks[index].text !== newText) {
+            tasks[index].text = newText;
+            editedCount++; // Increment only if the task was actually changed
+        }
+
+        const newSpan = document.createElement("span");
+        newSpan.textContent = newText;
+        newSpan.className = "task-text";
+        newSpan.addEventListener("dblclick", () => enableEditing(newSpan, index));
+
+        input.replaceWith(newSpan);
 
         saveTasks();
-        renderTasks();
     }
 
     // Drag-and-Drop Handlers
@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const newTask = { text, completed: false, selected: false }; // Include selected state
+        const newTask = { text, completed: false, selected: false };
         tasks.push(newTask);
         originalTasks.push(newTask);  
         taskInput.value = "";
@@ -187,24 +187,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Delete multiple selected tasks
-function deleteSelectedTasks() {
-    const selectedTasks = tasks.filter(task => task.selected);
-    const selectedCount = selectedTasks.length;
+    function deleteSelectedTasks() {
+        const selectedTasks = tasks.filter(task => task.selected);
+        const selectedCount = selectedTasks.length;
 
-    if (selectedCount === 0) {
-        alert("No tasks selected for deletion.");
-        return;
+        if (selectedCount === 0) {
+            alert("No tasks selected for deletion.");
+            return;
+        }
+
+        if (confirm(`Are you sure you want to delete ${selectedCount} selected task(s)?`)) {
+            tasks = tasks.filter(task => !task.selected);
+            originalTasks = originalTasks.filter(task => !task.selected);
+            deletedCount += selectedCount;
+
+            saveTasks();
+            renderTasks();
+        }
     }
-
-    if (confirm(`Are you sure you want to delete ${selectedCount} selected task(s)?`)) {
-        tasks = tasks.filter(task => !task.selected);
-        originalTasks = originalTasks.filter(task => !task.selected);
-        deletedCount += selectedCount;
-
-        saveTasks();
-        renderTasks();
-    }
-}
 
     // Save tasks to localStorage
     function saveTasks() {
@@ -225,7 +225,7 @@ function deleteSelectedTasks() {
         }
     }
 
-    // Sorting Functions (ascending & descending)
+    // Sorting Functions
     function sortTasksAsc() {
         tasks.sort((a, b) => a.text.toLowerCase().localeCompare(b.text.toLowerCase()));
         saveTasks();
@@ -238,19 +238,11 @@ function deleteSelectedTasks() {
         renderTasks();
     }
 
-    // Reset order to original
     function resetTaskOrder() {
         tasks = [...originalTasks];
         saveTasks();
         renderTasks();
     }
-
-    // Delete selected tasks on 'Delete' key press
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Delete") {
-            deleteSelectedTasks();
-        }
-    });
 
     // Event Listeners
     addTaskButton.addEventListener("click", addTask);
@@ -262,7 +254,7 @@ function deleteSelectedTasks() {
     sortDescButton.addEventListener("click", sortTasksDesc);
     resetOrderButton.addEventListener("click", resetTaskOrder);
 
-    // Load dark mode and render tasks on page load
+    // Load settings
     loadDarkMode();
     renderTasks();
 });
