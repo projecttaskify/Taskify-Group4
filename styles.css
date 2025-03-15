@@ -21,6 +21,13 @@ body {
     border: 2px solid #30a6d6; 
 }
 
+/* Dark Mode Completed Tasks */
+.dark-mode .h1 {
+    background: #2a4a2a !important; 
+    border-left: 5px solid #66bb6a;
+}
+
+
 /* Title */
 h1 {
     font-size: 34px;
