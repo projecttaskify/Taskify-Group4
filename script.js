@@ -1,5 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // Select Elements
+// Select Elements
     const taskInput = document.getElementById("task-input");
     const addTaskButton = document.getElementById("add-task");
     const taskList = document.getElementById("task-list");
@@ -99,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function deleteTask(index) {
         if (confirm(`Delete task: "${tasks[index].text}"?`)) {
             tasks.splice(index, 1);
-            originalTasks = originalTasks.filter((_, i) => i !== index);
+            originalTasks = originalTasks.filter((task, i) => i !== index);
             deletedCount++;
             saveTasks();
             renderTasks();
@@ -156,6 +155,7 @@ function saveEditedTask(input, index) {
         originalSpan.textContent = tasks[index].text;
         originalSpan.className = "task-text";
         originalSpan.addEventListener("dblclick", () => enableEditing(originalSpan, index));
+        input.replaceWith(originalSpan);
 
         input.replaceWith(originalSpan);
         return;
@@ -228,11 +228,17 @@ function saveEditedTask(input, index) {
     function toggleDarkMode() {
         const isDarkMode = document.body.classList.toggle("dark-mode");
         localStorage.setItem("darkMode", isDarkMode ? "enabled" : "disabled");
+        themeToggle.textContent = isDarkMode ? "🌞 Toggle Theme" : "🌙 Toggle Theme";
+        themeToggle.textContent = document.body.classList.contains("dark-mode") ? "🌞 Toggle Theme" : "🌙 Toggle Theme";
+        themeToggle.textContent = document.body.classList.contains("dark-mode") ? "🌞 Toggle Theme" : "🌙 Toggle Theme";
+        themeToggle.textContent = document.body.classList.contains("dark-mode") ? "🌞 Toggle Theme" : "🌙 Toggle Theme";
+        themeToggle.textContent = document.body.classList.contains("dark-mode") ? "🌞 Toggle Theme" : "🌙 Toggle Theme";
     }
 
     function loadDarkMode() {
         if (localStorage.getItem("darkMode") === "enabled") {
             document.body.classList.add("dark-mode");
+            themeToggle.textContent = "🌞 Toggle Theme";
         }
     }
 
@@ -264,14 +270,19 @@ function saveEditedTask(input, index) {
     }
 });
 
-    themeToggle.addEventListener("click", toggleDarkMode);
+    themeToggle.addEventListener("click", () => {
+        toggleDarkMode();
+        themeToggle.textContent = document.body.classList.contains("dark-mode") ? "🌞 Toggle Theme" : "🌙 Toggle Theme";
+    });
     taskInput.addEventListener("keypress", (e) => { if (e.key === "Enter") addTask(); });
 
     sortAscButton.addEventListener("click", sortTasksAsc);
     sortDescButton.addEventListener("click", sortTasksDesc);
     resetOrderButton.addEventListener("click", resetTaskOrder);
 
+     
     // Load settings
     loadDarkMode();
     renderTasks();
 });
+
