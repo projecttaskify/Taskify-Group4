@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-// Select Elements
+    // Select Elements
     const taskInput = document.getElementById("task-input");
     const addTaskButton = document.getElementById("add-task");
     const taskList = document.getElementById("task-list");
