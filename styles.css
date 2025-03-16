@@ -1,7 +1,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     background: #a6d5be; 
-    color: #1c1c1c;
+    color: #1c1c1c; /* Light mode text color */
     transition: background 0.3s, color 0.3s;
     display: flex;
     justify-content: center;
@@ -18,7 +18,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
-    border: 2px solid #30a6d6; 
+    border: 2px solid #4CAF50; /* Light mode border color */
 }
 
 /* Dark Mode Completed Tasks */
@@ -27,12 +27,15 @@ body {
     border-left: 5px solid #66bb6a;
 }
 
-
 /* Title */
 h1 {
     font-size: 34px;
-    color: #30a6d6;
+    color: #4CAF50; /* Light mode title color */
     margin-bottom: 20px;
+}
+
+.dark-mode h1 {
+    color: #2196F3; /* Dark mode title color */
 }
 
 /* Task Input */
@@ -47,7 +50,7 @@ h1 {
     padding: 10px;
     font-size: 16px;
     background: #ffffff;
-    border: 1px solid #30a6d6;
+    border: 1px solid #4CAF50; /* Light mode input border color */
     border-radius: 5px;
     color: #1c1c1c;
     outline: none;
@@ -58,8 +61,12 @@ h1 {
     box-shadow: 0 0 5px rgba(48, 166, 214, 0.5);
 }
 
+.dark-mode .task-input input {
+    border-color: #2196F3; /* Dark mode input border color */
+}
+
 .task-input button {
-    background: #30a6d6; 
+    background: #4CAF50; /* Light mode button color */
     color: white;
     border: none;
     padding: 10px 15px;
@@ -69,7 +76,7 @@ h1 {
 }
 
 .task-input button:hover {
-    background: #1c9c74; 
+    background: #45a049; /* Light mode button hover color */
 }
 
 /* Task Counters */
@@ -86,13 +93,13 @@ h1 {
 .check-icon {
     cursor: pointer;
     font-size: 18px;
-    color: #30a6d6;
+    color: #4CAF50; /* Light mode check icon color */
     margin-left: 10px;  
     transition: color 0.3s;
 }
 
 .check-icon:hover {
-    color: #1c9c74;
+    color: #1c9c74; /* Light mode check icon hover color */
 }
 
 /* Task List */
@@ -108,14 +115,18 @@ li {
     justify-content: space-between;
     padding: 12px;
     margin-bottom: 8px;
-    background: #a6d5be; 
+    background: #4caf50bf; 
     border-radius: 5px;
-    border-left: 5px solid #30a6d6; 
-    transition: background 0.3s;
+    border-left: 5px solid #4CAF50; /* Light mode list item border color */
+    transition: background 0.5s;
 }
 
 li:hover {
-    background: #54b080; 
+    background: #1c9c4d; /* Light mode list item hover color */
+}
+
+.dark-mode li:hover {
+    background: #2196F3; /* Dark mode list item hover color */
 }
 
 li .task-text {
@@ -132,8 +143,8 @@ li .task-text {
 
 /* Dark Mode Completed Tasks */
 .dark-mode .task-completed {
-    background: #2a4a2a !important; 
-    border-left: 5px solid #66bb6a;
+    background: #3a3a3a !important; 
+    border-left: 5px solid #2196f3;
 }
 
 /* Line-through Effect for Completed Tasks */
@@ -148,14 +159,14 @@ button {
     padding: 8px 12px;
     cursor: pointer;
     border: none;
-    background: #30a6d6;
+    background: #4CAF50; /* Light mode button color */
     color: white;
     border-radius: 5px;
     transition: background 0.3s;
 }
 
 button:hover {
-    background: #1c9c74; 
+    background: #45a049; /* Light mode button hover color */
 }
 
 .actions {
@@ -164,7 +175,7 @@ button:hover {
 
 /* Theme Toggle Button */
 #theme-toggle {
-    background: #30a6d6; 
+    background: #4CAF50; /* Light mode theme toggle color */
     color: white;
     font-size: 14px;
     padding: 8px 12px;
@@ -173,7 +184,7 @@ button:hover {
 }
 
 #theme-toggle:hover {
-    background: #1c9c74; 
+    background: #45a049; /* Light mode theme toggle hover color */
 }
 
 /*  Dark Mode */
@@ -184,7 +195,7 @@ button:hover {
 
 .dark-mode .container {
     background: #2c2c2c;
-    border: 2px solid #30a6d6; 
+    border: 2px solid #2196F3; /* Dark mode border color */
 }
 
 .dark-mode .task-counters {
@@ -192,24 +203,24 @@ button:hover {
 }
 
 .dark-mode li {
-    background: #3a3a3a;
-    border-left: 5px solid #30a6d6;
+    background: #3b95df;
+    border-left: 5px solid #2196F3; /* Dark mode list item border color */
 }
 
 .dark-mode li:hover {
-    background: #1c9c74; 
+    background: #5698ce; /* Dark mode list item hover color */
 }
 
 .dark-mode button {
-    background: #30a6d6;
+    background: #2196F3; /* Dark mode button color */
 }
 
 .dark-mode button:hover {
-    background: #1c9c74; 
+    background: #1976D2; /* Dark mode button hover color */
 }
 
 .dark-mode #theme-toggle {
-    background: #1c9c74;
+    background: #2196F3; /* Dark mode theme toggle color */
 }
 
 .dark-mode .task-text {
@@ -217,9 +228,15 @@ button:hover {
 }
 
 .dark-mode .check-icon {
-    color: #66bb6a;
+    color: #2196F3; /* Dark mode check icon color */
 }
 
 .dark-mode .check-icon:hover {
-    color: #1c9c74;
+    color: #1c9c74; /* Dark mode check icon hover color */
 }
+
+/* Checkbox styling for dark mode */
+.dark-mode input[type="checkbox"]:checked {
+    accent-color: #2196F3; /* Dark mode checkbox checked color */
+}
+                                      
